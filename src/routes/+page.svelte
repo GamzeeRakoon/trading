@@ -12,7 +12,6 @@
     }
 
 </script>
-<div class="flex flex-col justify-between h-screen">
   <Navbar />
 
   <main class="flex flex-col">
@@ -46,4 +45,3 @@
   </main>
 
   <Footer />
-</div>
