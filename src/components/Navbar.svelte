@@ -21,12 +21,12 @@
 	});
 
 	async function checkout() {
-		const items = get(cartItems);
-		const itemPosition = items.findIndex((item) => {
-			return item.id == id;
+		const item = get(cartItems);
+		const itemQuantity = item.findIndex((item) => {
+			return item.id;
 		});
 
-		if(itemPosition === -1) {
+		if(itemQuantity === -1) {
 			return
 		}
 
