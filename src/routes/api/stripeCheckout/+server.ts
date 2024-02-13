@@ -27,7 +27,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		line_items: lineItems,
 		mode: 'payment',
 		success_url: requestHost(request, 'success'),
-		cancel_url: requestHost(request, 'cancelled')
+		cancel_url: requestHost(request, 'cancel')
 	});
 
 	//send the url to the frontend
