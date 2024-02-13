@@ -5,7 +5,7 @@
 	import { cartItems } from '../stores/cart';
 	import { get } from 'svelte/store';
 
-	let isHomePage = false;
+	let isProductPage = false;
 
 	const toggleTheme = () => {
 		$theme = $theme === 'light' ? 'dark' : 'light';
@@ -14,7 +14,7 @@
 
 	onMount(() => {
 		const unsubscribe = page.subscribe(($page) => {
-			isHomePage = $page.url.pathname !== '/';
+			isProductPage = $page.url.pathname == '/products';
 		});
 
 		return unsubscribe;
@@ -43,7 +43,7 @@
 		<div class="flex-1">
 			<a href="/" class="text-xl btn btn-ghost">Home</a>
 		</div>
-		{#if isHomePage}
+		{#if isProductPage}
 			<div class="flex-none">
 				<button on:click={() => checkout()} class="btn btn-ghost">
 					Checkout
