@@ -1,7 +1,7 @@
 import type { RequestHandler } from './$types';
 import Stripe from 'stripe';
 
-const SECRET_STRIPE_KEY = '';
+const SECRET_STRIPE_KEY = 'sk_test_51KfXDZKPbcFLPyH8rULqMyzIEdcVjjUNDiIGpyq1FgBG1tDJGdPOeM96gCxklBXEuLzKBY4zYeb79BMRu6utIkCZ00sl9foGSR';
 const stripe = new Stripe(SECRET_STRIPE_KEY, {
 	apiVersion: '2023-10-16'
 });
@@ -12,8 +12,8 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	//change array to valid array stripe expects
 	const lineItems: any = [];
-	items.array.forEach((item: any) => {
-		lineItems.push({ price: item.id, quantity: item.quantity });
+		items.forEach((item: any) => {
+			lineItems.push({ price: item.id, quantity: item.quantity });
 	});
 
 	//gives a unique url for the person to check out with
@@ -27,6 +27,6 @@ export const POST: RequestHandler = async ({ request }) => {
 	//send the url to the frontend
 	return new Response(JSON.stringify({ url: session.url }), {
 		status: 200,
-		headers: { 'content-type': 'application/json' }
+		headers: { 'Content-Type': 'application/json' }
 	});
 };
