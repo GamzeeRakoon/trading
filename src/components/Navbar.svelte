@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { theme } from '$lib/index';
+	import { cartItems } from '../stores/cart';
+	import { get } from 'svelte/store';
 
 	let isHomePage = false;
 
@@ -17,6 +19,23 @@
 
 		return unsubscribe;
 	});
+
+	async function checkout() {
+		await fetch('api/stripeCheckout', {
+			method: 'POST',
+			headers: {
+				'content-Type': 'application/json'
+			},
+			body: JSON.stringify({ items: get(cartItems) })
+		})
+			.then((data) => {
+				return data.json();
+			})
+			.then((data) => {
+				data.url;
+				window.location.replace(data.url);
+			});
+	}
 </script>
 
 <header class="flex justify-center navbar">
@@ -26,7 +45,7 @@
 		</div>
 		{#if isHomePage}
 			<div class="flex-none">
-				<a href="/cart" class="btn btn-ghost">
+				<a on:click={() => checkout()} class="btn btn-ghost">
 					Checkout
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

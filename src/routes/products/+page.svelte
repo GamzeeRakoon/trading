@@ -5,17 +5,17 @@
 
 	const products: Product[] = [
 		{
-			id: '1',
+			id: 'price_1OjKdtKPbcFLPyH80Zx2wpgT',
 			name: 'Coffee',
 			price: 2
 		},
 		{
-			id: '2',
+			id: 'price_1OjKeaKPbcFLPyH82G11l7jm',
 			name: 'Sunglasses',
 			price: 10
 		},
 		{
-			id: '3',
+			id: 'price_1OjKezKPbcFLPyH824Cr9Xis',
 			name: 'Water Bottle',
 			price: 15
 		}
