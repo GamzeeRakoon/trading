@@ -6,16 +6,19 @@
 
 
 </script>
-
-<Navbar />
-
-<main class="container flex gap-4">
-		<ProductCard />
-		<ProductCard />
-		<ProductCard />
-</main>
-
-<Footer />
+<div class="flex flex-col justify-between h-screen">
+	<Navbar />
+	
+	<main class="flex justify-center mx-5">
+		<div class="container flex flex-row flex-wrap gap-5 justify-center">
+			<ProductCard />
+			<ProductCard />
+			<ProductCard />
+		</div>
+	</main>
+	
+	<Footer />
+</div>
 
 
 
