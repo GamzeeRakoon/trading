@@ -21,10 +21,19 @@
 	});
 
 	async function checkout() {
+		const items = get(cartItems);
+		const itemPosition = items.findIndex((item) => {
+			return item.id == id;
+		});
+
+		if(itemPosition === -1) {
+			return
+		}
+
 		await fetch('api/stripeCheckout', {
 			method: 'POST',
 			headers: {
-				'content-Type': 'application/json'
+				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({ items: get(cartItems) })
 		})
